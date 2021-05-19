@@ -10,5 +10,6 @@ namespace Webgentle.BookStore.Models
         public int Id { get; set; }
         public string Title  { get; set; }
         public string Director { get; set; }
+        public string  Description { get; set; }
     }
 }

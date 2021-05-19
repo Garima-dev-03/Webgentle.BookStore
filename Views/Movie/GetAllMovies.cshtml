@@ -1,6 +1,6 @@
-﻿
+﻿@model IEnumerable<Webgentle.BookStore.Models.MovieModel>
 @{
-    Layout = null;
+    Layout = "_Layout";
 }
 
 <!DOCTYPE html>
@@ -11,7 +11,30 @@
     <title>GetAllMovies</title>
 </head>
 <body>
-    <h1>Get here all movies</h1>
-    <button> Click me!</button>
+    <div class="container">
+        <div class="h3">Get here all movies</div>
+        <div class="row">
+            @foreach (var movie in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img src=".." alt="..." class="img-thumbnail">
+                        <div class="card-body">
+                            <div class="card-title">@movie.Title</div>
+                            <p class="card-text">@movie.Description</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="/movie/getmovie/@movie.Id" class="btn btn-sm btn-outline-secondary">View Details</a>
+                                </div>
+                                <small class="text-muted">@movie.Director</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+       
+    </div>
+    
 </body>
 </html>

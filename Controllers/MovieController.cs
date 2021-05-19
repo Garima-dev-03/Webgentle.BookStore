@@ -18,11 +18,12 @@ namespace Webgentle.BookStore.Controllers
         public ViewResult GetAllMovies()
         {
             var data = _movieRepository.GetAllBooks();
-            return View();
+            return View(data);
         }
-        public MovieModel GetMovie(int id)
+        public ViewResult GetMovie(int id)
         {
-            return _movieRepository.GetMovieById(id);
+            var dataById = _movieRepository.GetMovieById(id);
+            return View (dataById);
         }
         public List<MovieModel> SearchMovies(string movieName, string directorName)
         {

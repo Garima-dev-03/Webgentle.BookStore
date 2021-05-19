@@ -25,9 +25,11 @@ namespace Webgentle.BookStore.Repository
         {
             return new List<MovieModel>()
             {
-                new MovieModel(){Id = 1,Title ="Mvc",Director="Monica"},
-                new MovieModel(){Id = 1,Title ="c#",Director="jane"},
-                new MovieModel(){Id = 1,Title ="java",Director="harry"},
+                new MovieModel(){Id = 1,Title ="Notebook",Director="Monica",Description ="Short description about movie"},
+                new MovieModel(){Id = 1,Title ="Marvel",Director="jane",Description="Short description about movie"},
+                new MovieModel(){Id = 1,Title ="Marvel",Director="jane",Description="Short description about movie"},
+                new MovieModel(){Id = 1,Title ="Wonder Woman",Director="harry",Description="Short description about movie"},
+                
 
 
             };
