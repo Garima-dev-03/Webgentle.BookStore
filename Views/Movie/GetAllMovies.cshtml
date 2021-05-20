@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Webgentle.BookStore.Models.MovieModel>
+﻿@using Webgentle.BookStore.Models
+@model IEnumerable<MovieModel>
 
 <!DOCTYPE html>
 
@@ -13,11 +14,11 @@
         <div class="row">
             @foreach (var movie in Model)
             {
-                <div class="col-md-4">
+                <div class="col-m-4">
                     <div class="card mb-4 shadow-sm">
-                        <img src=".." alt="..." class="img-thumbnail">
+                        <img src="/image/Titleimag.png" alt="..." class="img-thumbnail" height="150" width="250">
                         <div class="card-body">
-                            <div class="card-title">@movie.Title</div>
+                            <div class="card-title alert-success">@movie.Title</div>
                           
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
