@@ -10,11 +10,23 @@ namespace Webgentle.BookStore.Controllers
 { 
     public class MovieController : Controller
     {
-        private readonly MovieRepository _movieRepository = null;
-        public MovieController()
+        private readonly MovieRepository _movieRepository;
+        public MovieController(MovieRepository movieRepository)
         {
-            _movieRepository = new MovieRepository();
+            _movieRepository = movieRepository;
         }
+      
+        public ActionResult AddToPlaylist(MovieModel movieModel)
+        {
+            if (movieModel.Title == null || movieModel.Director == null || movieModel.Description == null)
+            {
+                return View();
+            }
+            _movieRepository.AddToPlaylist(movieModel);
+            _movieRepository.SaveChanges();
+            return View();
+        }
+
         public ViewResult GetAllMovies()
         {
             var data = _movieRepository.GetAllBooks();
