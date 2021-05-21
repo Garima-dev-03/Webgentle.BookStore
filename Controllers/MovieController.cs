@@ -15,13 +15,14 @@ namespace Webgentle.BookStore.Controllers
         {
             _movieRepository = movieRepository;
         }
-      
+        public ActionResult AddToPlaylist()
+        {
+          
+            return View();
+        }
+        [HttpPost]
         public ActionResult AddToPlaylist(MovieModel movieModel)
         {
-            if (movieModel.Title == null || movieModel.Director == null || movieModel.Description == null)
-            {
-                return View();
-            }
             _movieRepository.AddToPlaylist(movieModel);
             _movieRepository.SaveChanges();
             return View();
