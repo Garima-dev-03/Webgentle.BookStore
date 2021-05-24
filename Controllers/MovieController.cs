@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,13 +16,16 @@ namespace Webgentle.BookStore.Controllers
         {
             _movieRepository = movieRepository;
         }
+
+      
         public ActionResult AddToPlaylist()
         {
           
             return View();
         }
+
         [HttpPost]
-        public ActionResult AddToPlaylist(MovieModel movieModel)
+        public  ActionResult AddToPlaylist(MovieModel movieModel)
         {
             _movieRepository.AddToPlaylist(movieModel);
             _movieRepository.SaveChanges();
@@ -44,5 +48,14 @@ namespace Webgentle.BookStore.Controllers
                 return _movieRepository.SearchBooks(movieName, directorName);
             }
         }
+        public ActionResult Delete(int id)
+         {
+          _movieRepository.Delete(id);
+          _movieRepository.SaveChanges();
+          return RedirectToAction("GetAllMovies");
+         }
+        
+       
+        
     }
 }

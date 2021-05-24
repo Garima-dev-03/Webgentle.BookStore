@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -47,5 +48,17 @@ namespace Webgentle.BookStore.Repository
         {
             return (_databaseContext.SaveChanges() >= 0);
         }
+        public void Delete(int id)
+        {
+            var data = _databaseContext.MovieDetails.Where(x => x.Id == id).FirstOrDefault();
+            if(data!=null)
+            {
+                _databaseContext.MovieDetails.Remove(data);
+                
+            }       
+     
+        }
+      
+
     }
 }

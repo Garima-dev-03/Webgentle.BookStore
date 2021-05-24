@@ -9,18 +9,21 @@
                 <div class="form-group col-md-6">
                     <label asp-for="Title"></label>
                     <input asp-for="@Model.Title" class="form-control" placeholder="Add a new movie">
+                    <span asp-validation-for="Title" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label asp-for="Director"></label> 
+                    <label asp-for="Director"></label>
                     <input asp-for="@Model.Director" class="form-control" placeholder="Director name">
+                    <span asp-validation-for="Director"class="text-danger"></span>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label asp-for="Description"></label>
-                    <textarea  asp-for="@Model.Description " class="form-control" placeholder="Description"></textarea>
+                    <textarea asp-for="@Model.Description " class="form-control" placeholder="Description"></textarea>
+                    <span asp-validation-for="Description"class="text-danger"></span>
                 </div>
             </div>
             <div class="form-row">
