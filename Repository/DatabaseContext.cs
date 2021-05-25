@@ -8,7 +8,7 @@ using Webgentle.BookStore.Models;
 
 namespace Webgentle.BookStore.Repository
 {
-    public class DatabaseContext: IdentityDbContext
+    public class DatabaseContext: IdentityDbContext<ApplicationUser>
     {
         public DatabaseContext(DbContextOptions<DatabaseContext> opt) : base(opt)
         {

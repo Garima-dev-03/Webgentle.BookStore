@@ -7,8 +7,10 @@ using Webgentle.BookStore.Models;
 
 namespace Webgentle.BookStore.Repository
 {
-   public interface ISignUpRepository
+   public interface IAccountRepository
     {
         public  Task<IdentityResult> CreateUserAsync(SignUpUserModel signUpUserModel);
+        public Task<SignInResult> PasswordSignInAsync(SignInUserModel signInUserModel);
+        public Task SignOutAsync();
     }
 }

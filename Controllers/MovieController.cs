@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace Webgentle.BookStore.Controllers
             _movieRepository = movieRepository;
         }
 
-      
+        
         public ActionResult AddToPlaylist()
         {
           
@@ -25,6 +26,7 @@ namespace Webgentle.BookStore.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public  ActionResult AddToPlaylist(MovieModel movieModel)
         {
             _movieRepository.AddToPlaylist(movieModel);
@@ -48,6 +50,8 @@ namespace Webgentle.BookStore.Controllers
                 return _movieRepository.SearchBooks(movieName, directorName);
             }
         }
+
+        [Authorize]
         public ActionResult Delete(int id)
          {
           _movieRepository.Delete(id);

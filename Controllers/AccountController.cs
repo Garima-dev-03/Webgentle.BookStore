@@ -10,10 +10,11 @@ namespace Webgentle.BookStore.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly ISignUpRepository _signUpRepository;
-        public AccountController(ISignUpRepository signUpRepository)
+        private readonly IAccountRepository _AccountRepository;
+        
+        public AccountController(IAccountRepository signUpRepository)
         {
-            _signUpRepository = signUpRepository;
+            _AccountRepository = signUpRepository;
         }
         public ViewResult SignUp()
         {
@@ -24,7 +25,7 @@ namespace Webgentle.BookStore.Controllers
         {
             if(ModelState.IsValid)
             {
-                var result = await _signUpRepository.CreateUserAsync(signUpUserModel);
+                var result = await _AccountRepository.CreateUserAsync(signUpUserModel);
                 if(!result.Succeeded)
                 {
                     foreach(var errorMessage in result.Errors)
@@ -36,6 +37,31 @@ namespace Webgentle.BookStore.Controllers
                 ModelState.Clear();
             }
             return View();
+        }
+        public ViewResult SignIn()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SignIn(SignInUserModel signInUserModel)
+        {
+            if(ModelState.IsValid)
+            {
+                var result = await _AccountRepository.PasswordSignInAsync(signInUserModel);
+                if(result.Succeeded)
+                {
+                    return RedirectToAction("Index", "home");
+                }
+                ModelState.AddModelError("", "Credentials are not correct");
+                
+            }
+            return View(signInUserModel);
+        }
+        public async Task<IActionResult> Logout()
+        {
+            await _AccountRepository.SignOutAsync();
+            return RedirectToAction("index", "home");
         }
     }
 }
