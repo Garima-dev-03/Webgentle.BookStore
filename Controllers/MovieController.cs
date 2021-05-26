@@ -18,7 +18,7 @@ namespace Webgentle.BookStore.Controllers
             _movieRepository = movieRepository;
         }
 
-        
+        [Authorize]
         public ActionResult AddToPlaylist()
         {
           
@@ -26,7 +26,7 @@ namespace Webgentle.BookStore.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        
         public  ActionResult AddToPlaylist(MovieModel movieModel)
         {
             _movieRepository.AddToPlaylist(movieModel);

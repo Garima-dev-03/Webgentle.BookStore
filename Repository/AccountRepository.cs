@@ -22,7 +22,9 @@ namespace Webgentle.BookStore.Repository
             var user = new ApplicationUser()
             {
                 Email = signUpUserModel.Email,
-                UserName = signUpUserModel.Email
+                UserName = signUpUserModel.Email,
+           
+                
             };
            var result = await _userManager.CreateAsync(user, signUpUserModel.Password);
             return result;

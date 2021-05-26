@@ -12,8 +12,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
+using Webgentle.BookStore.ClaimsForRegisteredUser;
 using Webgentle.BookStore.Models;
 using Webgentle.BookStore.Repository;
+using Webgentle.BookStore.Service;
 
 namespace Webgentle.BookStore
 {
@@ -35,6 +37,15 @@ namespace Webgentle.BookStore
             services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<DatabaseContext>();
             services.AddScoped<MovieRepository, MovieRepository>();
             services.AddScoped<IAccountRepository, AccountRepository>();
+            //to use custom claims we add this service with intereface and its implementation
+           // services.AddScoped <IUserClaimsPrincipalFactory<ApplicationUser>,ApplicationUserClaimsPrincipalFactory>();
+            //for redierect user to signIn page if not authorized to see some page
+            services.ConfigureApplicationCookie(config =>
+            {
+                config.LoginPath = "/account/signin";
+            });
+            services.AddScoped<IUserService, UserService>();
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
