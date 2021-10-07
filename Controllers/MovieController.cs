@@ -26,12 +26,14 @@ namespace Webgentle.BookStore.Controllers
         }
 
         [HttpPost]
+    //   [ValidateAntiForgeryToken]
         
-        public  ActionResult AddToPlaylist(MovieModel movieModel)
+         public  IActionResult AddToPlaylist(MovieModel movieModel)
         {
             _movieRepository.AddToPlaylist(movieModel);
             _movieRepository.SaveChanges();
-            return View();
+             //return View();
+            return RedirectToAction(nameof(GetAllMovies));
         }
 
         public ViewResult GetAllMovies()

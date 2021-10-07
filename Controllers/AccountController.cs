@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Webgentle.BookStore.Models;
 using Webgentle.BookStore.Repository;
@@ -21,6 +22,7 @@ namespace Webgentle.BookStore.Controllers
             return View();
         }
         [HttpPost]
+       
         public async Task<IActionResult> SignUp(SignUpUserModel signUpUserModel)
         {
             if(ModelState.IsValid)
@@ -44,6 +46,7 @@ namespace Webgentle.BookStore.Controllers
         }
 
         [HttpPost]
+       
         public async Task<IActionResult> SignIn(SignInUserModel signInUserModel)
         {
             if(ModelState.IsValid)
